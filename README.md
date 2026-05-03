@@ -7,11 +7,18 @@
   <img src="https://img.shields.io/badge/TypeScript-5-blue?logo=typescript" alt="TypeScript">
   <img src="https://img.shields.io/badge/Docker-ready-2496ED?logo=docker" alt="Docker">
   <img src="https://img.shields.io/badge/License-MIT-yellow" alt="License">
+  <img src="https://img.shields.io/badge/Live%20Demo-Available-blueviolet?style=flat" alt="Live Demo">
 </p>
 
 > A comprehensive, web-based visitor management system built for Aditya University. AUVMS streamlines the entire visitor lifecycle — from pre-registration and check-in to check-out, appointment booking, and security monitoring — while providing rich analytics and audit capabilities for administrators.
 
-🚀 **[Try Live Demo](https://aus-vms-proj.vercel.app/)**
+<div align="center">
+  
+  ### 🌐 [View Live Demo](https://aus-vms-proj.vercel.app/)
+  
+  **Try it now with demo credentials** • No installation required
+  
+</div>
 
 ---
 
