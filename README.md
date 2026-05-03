@@ -22,6 +22,7 @@
 - [Installation & Setup](#installation--setup)
 - [Environment Variables](#environment-variables)
 - [Running the Application](#running-the-application)
+- [Demo Credentials](#demo-credentials)
 - [API Documentation](#api-documentation)
 - [Contributing](#contributing)
 - [License](#license)
@@ -309,6 +310,37 @@ cd backend && npm start
 | `frontend` | `npm run build`   | Build production bundle          |
 | `frontend` | `npm run preview` | Preview production build locally |
 | `frontend` | `npm run lint`    | Lint frontend source files       |
+
+---
+
+## Demo Credentials
+
+Use these credentials to test the system locally or on deployed instances. All demo accounts are seeded by running the backend seed scripts.
+
+### Test User Accounts
+
+| Role   | Username   | Password    | Access Level                                        |
+| ------ | ---------- | ----------- | --------------------------------------------------- |
+| Admin  | `admin`    | `Aditya@123` | Full system access, user management, reports, config |
+| Staff  | `narayana` | `Aditya@123` | Manage appointments, view visitor history            |
+| Guard  | `guard`    | `Aditya@123` | Check-in/check-out visitors, manage gates            |
+
+### Testing the Application
+
+1. **Start the Application**
+   - Backend: `cd backend && npm run dev`
+   - Frontend: `cd frontend && npm run dev`
+
+2. **Login as Different Roles**
+   - Visit `http://localhost:3000/login`
+   - Use any of the demo credentials above to test different features
+
+3. **Quick Test Flows**
+   - **Admin**: Navigate to Admin Panel → Manage Users, Departments, Reports
+   - **Staff**: Book appointments, view visitor history
+   - **Guard**: Use Guard Portal to check-in/check-out visitors
+
+> ⚠️ **Security Note**: These are demo credentials for testing only. In production, use strong, unique passwords and never hardcode credentials in the codebase.
 
 ---
 
