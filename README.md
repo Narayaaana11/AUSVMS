@@ -319,11 +319,11 @@ Use these credentials to test the system locally or on deployed instances. All d
 
 ### Test User Accounts
 
-| Role   | Username   | Password    | Access Level                                        |
-| ------ | ---------- | ----------- | --------------------------------------------------- |
-| Admin  | `admin`    | `Aditya@123` | Full system access, user management, reports, config |
-| Staff  | `narayana` | `Aditya@123` | Manage appointments, view visitor history            |
-| Guard  | `guard`    | `Aditya@123` | Check-in/check-out visitors, manage gates            |
+| Role  | Username   | Password     | Access Level                                         |
+| ----- | ---------- | ------------ | ---------------------------------------------------- |
+| Admin | `admin`    | `Aditya@123` | Full system access, user management, reports, config |
+| Staff | `narayana` | `Aditya@123` | Manage appointments, view visitor history            |
+| Guard | `guard`    | `Aditya@123` | Check-in/check-out visitors, manage gates            |
 
 ### Testing the Application
 
