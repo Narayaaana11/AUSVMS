@@ -46,41 +46,48 @@ AUVMS (Aditya University Visitor Management System) is a full-stack web applicat
 ## Features
 
 ### 🏷️ Visitor Management
+
 - **Pre-registration** — Visitors can register in advance with their details and purpose of visit
 - **Check-in / Check-out** — Guards log arrivals and departures; timestamps are recorded automatically
 - **Digital visitor passes** — Auto-generated passes with QR codes or unique IDs
 - **Walk-in handling** — Support for unregistered, on-the-spot visitors
 
 ### 📅 Appointment Booking
+
 - Online appointment scheduling linked to staff/faculty calendars
 - Approval workflow for hosts to accept, reschedule, or decline requests
 - Automated reminders sent to both visitor and host before the meeting
 
 ### 🔐 Role-Based Access Control (RBAC)
-| Role | Capabilities |
-|------|-------------|
-| **Admin** | Full system access, user management, reports, configuration |
-| **Staff / Faculty** | Manage own appointments, view visitor history |
-| **Guard** | Check-in/check-out visitors, view active visitor list |
-| **Visitor** | Pre-register, book appointments, view own pass |
+
+| Role                | Capabilities                                                |
+| ------------------- | ----------------------------------------------------------- |
+| **Admin**           | Full system access, user management, reports, configuration |
+| **Staff / Faculty** | Manage own appointments, view visitor history               |
+| **Guard**           | Check-in/check-out visitors, view active visitor list       |
+| **Visitor**         | Pre-register, book appointments, view own pass              |
 
 ### 📬 Notifications
+
 - Email notifications via **Nodemailer** (appointment confirmations, reminders, pass details)
 - SMS notifications for time-sensitive alerts
 - **OTP verification** for visitor identity confirmation at check-in
 
 ### 📊 Analytics & Reporting
+
 - Real-time dashboard with visitor counts, peak hours, and department-wise breakdowns
 - Historical trend charts (daily, weekly, monthly)
 - Exportable reports in **CSV** format
 - **Scheduled reports** sent automatically to administrators
 
 ### 🗂️ Audit Logging
+
 - Every check-in, check-out, appointment change, and administrative action is logged
 - Tamper-evident log entries with timestamps and user IDs
 - Queryable audit trail for compliance and investigation purposes
 
 ### 🏛️ University-Specific Features
+
 - **Holiday management** — Define university holidays to block/adjust appointment slots
 - **Department management** — Organise staff and visitor data by department
 - Campus-wide visitor statistics per department or building
@@ -90,33 +97,36 @@ AUVMS (Aditya University Visitor Management System) is a full-stack web applicat
 ## Tech Stack
 
 ### Backend
-| Technology | Purpose |
-|------------|---------|
-| **Node.js 18+** | Server runtime |
-| **Express.js** | REST API framework |
-| **MongoDB 6+** | Primary database (via Mongoose ODM) |
-| **Redis** | Session caching and rate limiting |
-| **JWT** | Stateless authentication tokens |
-| **Nodemailer** | Transactional email delivery |
-| **node-cron** | Scheduled jobs (automated reports, reminders) |
-| **bcrypt** | Password hashing |
+
+| Technology      | Purpose                                       |
+| --------------- | --------------------------------------------- |
+| **Node.js 18+** | Server runtime                                |
+| **Express.js**  | REST API framework                            |
+| **MongoDB 6+**  | Primary database (via Mongoose ODM)           |
+| **Redis**       | Session caching and rate limiting             |
+| **JWT**         | Stateless authentication tokens               |
+| **Nodemailer**  | Transactional email delivery                  |
+| **node-cron**   | Scheduled jobs (automated reports, reminders) |
+| **bcrypt**      | Password hashing                              |
 
 ### Frontend
-| Technology | Purpose |
-|------------|---------|
-| **React 18** | UI component library |
-| **TypeScript 5** | Type-safe JavaScript |
-| **Vite** | Fast development server and bundler |
-| **Tailwind CSS** | Utility-first styling |
-| **React Query** | Server-state management and caching |
-| **React Router** | Client-side routing |
-| **Recharts** | Analytics charts and dashboards |
+
+| Technology       | Purpose                             |
+| ---------------- | ----------------------------------- |
+| **React 18**     | UI component library                |
+| **TypeScript 5** | Type-safe JavaScript                |
+| **Vite**         | Fast development server and bundler |
+| **Tailwind CSS** | Utility-first styling               |
+| **React Query**  | Server-state management and caching |
+| **React Router** | Client-side routing                 |
+| **Recharts**     | Analytics charts and dashboards     |
 
 ### DevOps & Tooling
-| Technology | Purpose |
-|------------|---------|
+
+| Technology                  | Purpose                                         |
+| --------------------------- | ----------------------------------------------- |
 | **Docker / Docker Compose** | Containerised local and production environments |
-| **ESLint + Prettier** | Code quality and formatting |
+| **ESLint + Prettier**       | Code quality and formatting                     |
 
 ---
 
@@ -124,20 +134,23 @@ AUVMS (Aditya University Visitor Management System) is a full-stack web applicat
 
 ```
 AUSVMS/
-├── backend/                    # Express.js REST API
-│   ├── src/
-│   │   ├── config/             # Database, Redis, and environment config
-│   │   ├── controllers/        # Route handler logic
-│   │   ├── middleware/         # Auth, error handling, rate limiting
-│   │   ├── models/             # Mongoose schemas (User, Visitor, Appointment…)
-│   │   ├── routes/             # API route definitions
-│   │   ├── services/           # Business logic (notifications, OTP, reports)
-│   │   ├── utils/              # Helpers (logger, validators, schedulers)
-│   │   └── app.js              # Express app entry point
-│   ├── .env.example            # Environment variable template
-│   └── package.json
+├── AUVMS Backend/              # Express.js REST API
+│   ├── config/                 # Database and environment config
+│   ├── controllers/            # Route handler logic
+│   ├── middleware/             # Auth, error handling, rate limiting
+│   ├── models/                 # Mongoose schemas (User, Visitor, Appointment…)
+│   ├── routes/                 # API route definitions
+│   ├── services/               # Business logic (notifications, OTP, reports)
+│   ├── jobs/                   # Background jobs and workers
+│   ├── utils/                  # Helpers (logger, validators, schedulers)
+│   ├── scripts/                # Database seeding and utility scripts
+│   ├── tests/                  # Backend tests and test utilities
+│   ├── uploads/                # File upload directory
+│   ├── server.js               # Express app entry point
+│   ├── package.json
+│   └── vercel.json
 │
-├── frontend/                   # React + TypeScript SPA
+├── AUVMS Frontend/             # React + TypeScript SPA
 │   ├── src/
 │   │   ├── api/                # Axios API client and endpoint hooks
 │   │   ├── components/         # Reusable UI components
@@ -146,11 +159,13 @@ AUSVMS/
 │   │   ├── store/              # Global state (auth context, etc.)
 │   │   ├── types/              # Shared TypeScript type definitions
 │   │   └── main.tsx            # Application entry point
-│   ├── .env.example
-│   └── package.json
+│   ├── public/                 # Static assets
+│   ├── package.json
+│   ├── vite.config.ts          # Vite configuration
+│   └── tsconfig.json
 │
-├── docker-compose.yml          # Multi-service compose file
-└── README.md
+├── README.md
+└── readme.md
 ```
 
 ---
@@ -163,7 +178,7 @@ AUSVMS/
 - [npm 9+](https://www.npmjs.com/) or [pnpm](https://pnpm.io/)
 - [MongoDB 6+](https://www.mongodb.com/) (local instance or Atlas connection string)
 - [Redis 7+](https://redis.io/) (local instance or cloud URL)
-- [Docker & Docker Compose](https://www.docker.com/) *(optional, for containerised setup)*
+- [Docker & Docker Compose](https://www.docker.com/) _(optional, for containerised setup)_
 
 ### Option A — Docker Compose (Recommended)
 
@@ -183,6 +198,7 @@ docker-compose up --build
 ```
 
 The application will be available at:
+
 - **Frontend**: http://localhost:5173
 - **Backend API**: http://localhost:5000
 - **MongoDB**: `localhost:27017`
@@ -283,16 +299,16 @@ cd backend && npm start
 
 ### Useful Scripts
 
-| Directory | Command | Description |
-|-----------|---------|-------------|
-| `backend` | `npm run dev` | Start API server with hot-reload |
-| `backend` | `npm start` | Start API server (production) |
-| `backend` | `npm test` | Run backend unit tests |
-| `backend` | `npm run lint` | Lint backend source files |
-| `frontend` | `npm run dev` | Start Vite dev server |
-| `frontend` | `npm run build` | Build production bundle |
+| Directory  | Command           | Description                      |
+| ---------- | ----------------- | -------------------------------- |
+| `backend`  | `npm run dev`     | Start API server with hot-reload |
+| `backend`  | `npm start`       | Start API server (production)    |
+| `backend`  | `npm test`        | Run backend unit tests           |
+| `backend`  | `npm run lint`    | Lint backend source files        |
+| `frontend` | `npm run dev`     | Start Vite dev server            |
+| `frontend` | `npm run build`   | Build production bundle          |
 | `frontend` | `npm run preview` | Preview production build locally |
-| `frontend` | `npm run lint` | Lint frontend source files |
+| `frontend` | `npm run lint`    | Lint frontend source files       |
 
 ---
 
@@ -302,75 +318,75 @@ All API routes are prefixed with `/api`. Authentication is required for protecte
 
 ### Authentication
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `POST` | `/api/auth/register` | Register a new user account |
-| `POST` | `/api/auth/login` | Login and receive a JWT token |
-| `POST` | `/api/auth/logout` | Invalidate the current session |
-| `POST` | `/api/auth/refresh` | Refresh an expiring JWT token |
-| `POST` | `/api/auth/verify-otp` | Verify an OTP code |
+| Method | Endpoint               | Description                    |
+| ------ | ---------------------- | ------------------------------ |
+| `POST` | `/api/auth/register`   | Register a new user account    |
+| `POST` | `/api/auth/login`      | Login and receive a JWT token  |
+| `POST` | `/api/auth/logout`     | Invalidate the current session |
+| `POST` | `/api/auth/refresh`    | Refresh an expiring JWT token  |
+| `POST` | `/api/auth/verify-otp` | Verify an OTP code             |
 
 ### Visitors
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/visitors` | List all visitors (paginated) |
-| `POST` | `/api/visitors` | Pre-register a new visitor |
-| `GET` | `/api/visitors/:id` | Get visitor details |
-| `PUT` | `/api/visitors/:id` | Update visitor information |
-| `POST` | `/api/visitors/:id/checkin` | Record check-in for a visitor |
+| Method | Endpoint                     | Description                    |
+| ------ | ---------------------------- | ------------------------------ |
+| `GET`  | `/api/visitors`              | List all visitors (paginated)  |
+| `POST` | `/api/visitors`              | Pre-register a new visitor     |
+| `GET`  | `/api/visitors/:id`          | Get visitor details            |
+| `PUT`  | `/api/visitors/:id`          | Update visitor information     |
+| `POST` | `/api/visitors/:id/checkin`  | Record check-in for a visitor  |
 | `POST` | `/api/visitors/:id/checkout` | Record check-out for a visitor |
 
 ### Appointments
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/appointments` | List appointments (filterable) |
-| `POST` | `/api/appointments` | Book a new appointment |
-| `GET` | `/api/appointments/:id` | Get appointment details |
-| `PUT` | `/api/appointments/:id` | Update / reschedule appointment |
-| `DELETE` | `/api/appointments/:id` | Cancel an appointment |
-| `PATCH` | `/api/appointments/:id/approve` | Approve a pending appointment |
+| Method   | Endpoint                        | Description                     |
+| -------- | ------------------------------- | ------------------------------- |
+| `GET`    | `/api/appointments`             | List appointments (filterable)  |
+| `POST`   | `/api/appointments`             | Book a new appointment          |
+| `GET`    | `/api/appointments/:id`         | Get appointment details         |
+| `PUT`    | `/api/appointments/:id`         | Update / reschedule appointment |
+| `DELETE` | `/api/appointments/:id`         | Cancel an appointment           |
+| `PATCH`  | `/api/appointments/:id/approve` | Approve a pending appointment   |
 
 ### Users & Roles
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/users` | List all users (Admin only) |
-| `POST` | `/api/users` | Create a new user (Admin only) |
-| `PUT` | `/api/users/:id` | Update user details or role |
-| `DELETE` | `/api/users/:id` | Delete a user (Admin only) |
+| Method   | Endpoint         | Description                    |
+| -------- | ---------------- | ------------------------------ |
+| `GET`    | `/api/users`     | List all users (Admin only)    |
+| `POST`   | `/api/users`     | Create a new user (Admin only) |
+| `PUT`    | `/api/users/:id` | Update user details or role    |
+| `DELETE` | `/api/users/:id` | Delete a user (Admin only)     |
 
 ### Departments
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/departments` | List all departments |
-| `POST` | `/api/departments` | Create a department (Admin) |
-| `PUT` | `/api/departments/:id` | Update a department (Admin) |
+| Method   | Endpoint               | Description                 |
+| -------- | ---------------------- | --------------------------- |
+| `GET`    | `/api/departments`     | List all departments        |
+| `POST`   | `/api/departments`     | Create a department (Admin) |
+| `PUT`    | `/api/departments/:id` | Update a department (Admin) |
 | `DELETE` | `/api/departments/:id` | Delete a department (Admin) |
 
 ### Holidays
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/holidays` | List university holidays |
-| `POST` | `/api/holidays` | Add a holiday (Admin) |
+| Method   | Endpoint            | Description              |
+| -------- | ------------------- | ------------------------ |
+| `GET`    | `/api/holidays`     | List university holidays |
+| `POST`   | `/api/holidays`     | Add a holiday (Admin)    |
 | `DELETE` | `/api/holidays/:id` | Remove a holiday (Admin) |
 
 ### Reports & Analytics
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/reports/dashboard` | Real-time dashboard statistics |
-| `GET` | `/api/reports/visitors` | Visitor trend report (with date range) |
-| `GET` | `/api/reports/export` | Download visitor data as CSV |
+| Method | Endpoint                 | Description                            |
+| ------ | ------------------------ | -------------------------------------- |
+| `GET`  | `/api/reports/dashboard` | Real-time dashboard statistics         |
+| `GET`  | `/api/reports/visitors`  | Visitor trend report (with date range) |
+| `GET`  | `/api/reports/export`    | Download visitor data as CSV           |
 
 ### Audit Logs
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| `GET` | `/api/audit-logs` | Query audit log entries (Admin only) |
+| Method | Endpoint          | Description                          |
+| ------ | ----------------- | ------------------------------------ |
+| `GET`  | `/api/audit-logs` | Query audit log entries (Admin only) |
 
 > 📘 For a complete, interactive API reference, import the provided Postman collection (`docs/AUSVMS.postman_collection.json`) once the server is running.
 
@@ -381,6 +397,7 @@ All API routes are prefixed with `/api`. Authentication is required for protecte
 Contributions are welcome! Please follow the workflow below:
 
 1. **Fork** the repository and create a new branch from `main`:
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -391,11 +408,13 @@ Contributions are welcome! Please follow the workflow below:
    - The linter passes (`npm run lint`)
 
 3. **Commit** using clear, descriptive messages:
+
    ```bash
    git commit -m "feat: add visitor badge PDF export"
    ```
 
 4. **Push** your branch and open a **Pull Request** against `main`:
+
    ```bash
    git push origin feature/your-feature-name
    ```
@@ -419,8 +438,8 @@ See the [LICENSE](LICENSE) file for full details.
 
 ## Authors
 
-| Name | Role | GitHub |
-|------|------|--------|
+| Name         | Role           | GitHub                                           |
+| ------------ | -------------- | ------------------------------------------------ |
 | **Narayana** | Lead Developer | [@Narayaaana11](https://github.com/Narayaaana11) |
 
 ---
