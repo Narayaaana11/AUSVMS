@@ -1,0 +1,502 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AVAMS Enterprise Design System - Industrial UI/UX */
+
+/* Hide scrollbar while maintaining functionality */
+@layer utilities {
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  /* Hide scrollbar utility (horizontal) */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* ─── Announcement Ticker ─── */
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.ticker-track {
+  display: flex;
+  animation: ticker-scroll 40s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ticker-wrap:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+/* ─── Recruiter Logo Marquee ─── */
+.logo-marquee-track {
+  animation: logo-marquee 30s linear infinite;
+  white-space: nowrap;
+}
+
+@keyframes logo-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.logo-marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@layer base {
+  :root {
+    /* Enterprise Color Palette - Light Mode */
+    --background: 252 100% 99%;
+    --foreground: 225 15% 15%;
+
+    /* Surface & Card Colors */
+    --surface: 0 0% 100%;
+    --surface-container: 240 10% 98%;
+    --surface-container-low: 240 5% 96%;
+    --surface-container-high: 240 5% 94%;
+    --card: 0 0% 100%;
+    --card-foreground: 225 15% 15%;
+
+    /* Primary University Blue - Modern & Sophisticated */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-container: 217 100% 95%;
+    --primary-container-foreground: 217 100% 25%;
+    --primary-hover: 217 91% 55%;
+    --primary-active: 217 91% 50%;
+
+    /* Secondary Professional Blue */
+    --secondary: 220 15% 95%;
+    --secondary-foreground: 220 15% 25%;
+    --secondary-container: 220 15% 90%;
+    --secondary-container-foreground: 220 15% 20%;
+
+    /* Tertiary Gold - University Accent */
+    --tertiary: 45 100% 50%;
+    --tertiary-foreground: 45 100% 15%;
+    --tertiary-container: 45 100% 95%;
+    --tertiary-container-foreground: 45 100% 25%;
+
+    /* Semantic Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-container: 142 76% 95%;
+    --success-container-foreground: 142 76% 20%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --warning-container: 38 92% 95%;
+    --warning-container-foreground: 38 92% 25%;
+
+    --error: 0 84% 60%;
+    --error-foreground: 0 0% 100%;
+    --error-container: 0 84% 95%;
+    --error-container-foreground: 0 84% 25%;
+
+    /* Neutral Colors */
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 15% 45%;
+    --accent: 220 15% 92%;
+    --accent-foreground: 220 15% 25%;
+
+    /* Popover & Dialog */
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 15% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Border & Input */
+    --border: 220 15% 90%;
+    --input: 220 15% 92%;
+    --ring: 217 91% 60%;
+
+    /* Advanced Radius System */
+    --radius-xs: 0.25rem;
+    --radius-sm: 0.375rem;
+    --radius: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+
+    /* Enterprise Shadows */
+    --shadow-xs: 0 1px 2px 0 hsl(220 15% 15% / 0.05);
+    --shadow-sm: 0 1px 3px 0 hsl(220 15% 15% / 0.1), 0 1px 2px -1px hsl(220 15% 15% / 0.1);
+    --shadow-md: 0 4px 6px -1px hsl(220 15% 15% / 0.1), 0 2px 4px -2px hsl(220 15% 15% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(220 15% 15% / 0.1), 0 4px 6px -4px hsl(220 15% 15% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(220 15% 15% / 0.1), 0 8px 10px -6px hsl(220 15% 15% / 0.1);
+    --shadow-2xl: 0 25px 50px -12px hsl(220 15% 15% / 0.25);
+    --shadow-glow: 0 0 0 1px hsl(217 91% 60% / 0.1), 0 4px 16px -2px hsl(217 91% 60% / 0.3);
+
+    /* Premium Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(217 91% 70%) 100%);
+    --gradient-surface: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(240 10% 98%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(217 91% 45%) 50%, hsl(45 100% 50%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(45 100% 50%) 0%, hsl(45 100% 60%) 100%);
+
+    /* Professional Sidebar (Light) */
+    --sidebar-background: 240 20% 99%;
+    --sidebar-foreground: 220 15% 18%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 20% 96%;
+    --sidebar-accent-foreground: 220 15% 25%;
+    --sidebar-border: 240 18% 90%;
+    --sidebar-ring: 217 91% 60%;
+  }
+
+  .dark {
+    /* Enterprise Dark Mode */
+    --background: 225 15% 8%;
+    --foreground: 220 15% 95%;
+
+    --surface: 225 15% 12%;
+    --surface-container: 225 15% 15%;
+    --surface-container-low: 225 15% 10%;
+    --surface-container-high: 225 15% 18%;
+    --card: 225 15% 12%;
+    --card-foreground: 220 15% 95%;
+
+    --primary: 217 91% 65%;
+    --primary-foreground: 0 0% 100%;
+    --primary-container: 217 91% 20%;
+    --primary-container-foreground: 217 91% 90%;
+    --primary-hover: 217 91% 70%;
+    --primary-active: 217 91% 75%;
+
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 220 15% 90%;
+    --secondary-container: 220 15% 15%;
+    --secondary-container-foreground: 220 15% 85%;
+
+    --tertiary: 45 100% 60%;
+    --tertiary-foreground: 45 100% 10%;
+    --tertiary-container: 45 100% 15%;
+    --tertiary-container-foreground: 45 100% 85%;
+
+    --success: 142 76% 50%;
+    --success-foreground: 0 0% 100%;
+    --success-container: 142 76% 15%;
+    --success-container-foreground: 142 76% 85%;
+
+    --warning: 38 92% 60%;
+    --warning-foreground: 0 0% 100%;
+    --warning-container: 38 92% 15%;
+    --warning-container-foreground: 38 92% 85%;
+
+    --error: 0 84% 65%;
+    --error-foreground: 0 0% 100%;
+    --error-container: 0 84% 15%;
+    --error-container-foreground: 0 84% 85%;
+
+    --muted: 220 15% 20%;
+    --muted-foreground: 220 15% 65%;
+    --accent: 220 15% 18%;
+    --accent-foreground: 220 15% 85%;
+
+    --popover: 225 15% 12%;
+    --popover-foreground: 220 15% 95%;
+
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 25%;
+    --input: 220 15% 20%;
+    --ring: 217 91% 65%;
+
+    --sidebar-background: 225 15% 8%;
+    --sidebar-foreground: 220 15% 90%;
+    --sidebar-primary: 217 91% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 225 15% 15%;
+    --sidebar-accent-foreground: 220 15% 90%;
+    --sidebar-border: 225 15% 20%;
+    --sidebar-ring: 217 91% 65%;
+
+    /* Dark mode shadows */
+    --shadow-xs: 0 1px 2px 0 hsl(0 0% 0% / 0.2);
+    --shadow-sm: 0 1px 3px 0 hsl(0 0% 0% / 0.3), 0 1px 2px -1px hsl(0 0% 0% / 0.3);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.3), 0 2px 4px -2px hsl(0 0% 0% / 0.3);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.3), 0 4px 6px -4px hsl(0 0% 0% / 0.3);
+    --shadow-xl: 0 20px 25px -5px hsl(0 0% 0% / 0.3), 0 8px 10px -6px hsl(0 0% 0% / 0.3);
+    --shadow-2xl: 0 25px 50px -12px hsl(0 0% 0% / 0.4);
+    --shadow-glow: 0 0 0 1px hsl(217 91% 65% / 0.2), 0 4px 16px -2px hsl(217 91% 65% / 0.4);
+
+    /* Dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 65%) 0%, hsl(217 91% 55%) 100%);
+    --gradient-surface: linear-gradient(135deg, hsl(225 15% 12%) 0%, hsl(225 15% 15%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(217 91% 65%) 0%, hsl(217 91% 50%) 50%, hsl(45 100% 60%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(45 100% 60%) 0%, hsl(45 100% 70%) 100%);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased transition-colors duration-300;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Enhanced Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl lg:text-5xl;
+  }
+
+  h2 {
+    @apply text-3xl lg:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl lg:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl lg:text-2xl;
+  }
+
+  h5 {
+    @apply text-lg lg:text-xl;
+  }
+
+  h6 {
+    @apply text-base lg:text-lg;
+  }
+
+  /* Focus Management */
+  :focus {
+    @apply outline-none;
+  }
+
+  :focus-visible {
+    @apply ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+
+  /* Enterprise Surface System */
+  .surface {
+    @apply bg-surface border border-border;
+  }
+
+  .surface-container {
+    @apply bg-surface-container border border-border;
+  }
+
+  .surface-container-low {
+    @apply bg-surface-container-low border border-border;
+  }
+
+  .surface-container-high {
+    @apply bg-surface-container-high border border-border;
+  }
+
+  /* Premium Gradient System */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-surface {
+    background: var(--gradient-surface);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  /* Enterprise Shadow System */
+  .shadow-enterprise-xs {
+    box-shadow: var(--shadow-xs);
+  }
+
+  .shadow-enterprise-sm {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .shadow-enterprise-md {
+    box-shadow: var(--shadow-md);
+  }
+
+  .shadow-enterprise-lg {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .shadow-enterprise-xl {
+    box-shadow: var(--shadow-xl);
+  }
+
+  .shadow-enterprise-2xl {
+    box-shadow: var(--shadow-2xl);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Floating Animation */
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Glass Morphism Effect */
+  .glass {
+    @apply backdrop-blur-xl bg-white/10 border border-white/20;
+  }
+
+  .glass-dark {
+    @apply backdrop-blur-xl bg-black/10 border border-white/10;
+  }
+
+  /* Enhanced Interactive Elements */
+  .interactive {
+    @apply transition-all duration-200 ease-out hover:scale-[1.02] active:scale-[0.98];
+  }
+
+  .interactive-lg {
+    @apply transition-all duration-300 ease-out hover:scale-105 hover:shadow-enterprise-lg active:scale-95;
+  }
+
+  /* Pulse Glow Effect */
+  .pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse-glow {
+
+    0%,
+    100% {
+      opacity: 1;
+      box-shadow: var(--shadow-glow);
+    }
+
+    50% {
+      opacity: 0.8;
+      box-shadow: 0 0 0 1px hsl(217 91% 60% / 0.2), 0 4px 20px -2px hsl(217 91% 60% / 0.5);
+    }
+  }
+
+  /* Slide In Animations */
+  .slide-in-up {
+    animation: slide-in-up 0.3s ease-out;
+  }
+
+  @keyframes slide-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .slide-in-right {
+    animation: slide-in-right 0.3s ease-out;
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Stagger Animation */
+  .stagger-children>* {
+    animation: slide-in-up 0.3s ease-out backwards;
+  }
+
+  .stagger-children>*:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  .stagger-children>*:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .stagger-children>*:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  .stagger-children>*:nth-child(4) {
+    animation-delay: 0.4s;
+  }
+
+  .stagger-children>*:nth-child(5) {
+    animation-delay: 0.5s;
+  }
+
+  .stagger-children>*:nth-child(6) {
+    animation-delay: 0.6s;
+  }
+}
