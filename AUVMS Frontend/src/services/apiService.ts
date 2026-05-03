@@ -80,23 +80,6 @@ class ApiService {
     }
   }
 
-  // Fetch departments (public)
-  async getDepartments(): Promise<Array<{ _id: string; name: string; code?: string }>> {
-    try {
-      // Try public list endpoint first
-      const res = await this.request<{ success: boolean; data: { departments: any[] } }>("/departments/list");
-      return (res?.data?.departments || []).map((d) => ({ _id: d._id, name: d.name, code: d.code }));
-    } catch (error) {
-      // Fallback to admin endpoint if user has access
-      try {
-        const res = await this.request<{ success: boolean; data: { departments: any[] } }>("/departments");
-        return (res?.data?.departments || []).map((d) => ({ _id: d._id, name: d.name, code: d.code }));
-      } catch {
-        return [];
-      }
-    }
-  }
-
   // Fetch public staff list for booking
   async listStaffPublic(): Promise<Array<{ _id: string; name: string; email?: string; department?: string }>> {
     const res = await this.request<any>("/users/staff");
