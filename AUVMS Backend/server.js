@@ -74,7 +74,18 @@ app.use(cors({ origin: true, credentials: true }));
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 300 });
 app.use('/api', limiter);
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({
+    message: 'AUVMS Backend API',
+    version: '1.0.0',
+    status: 'running',
+    docs: 'Use /api endpoints for API calls'
+  });
+});
+
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
+
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/visitors', visitorRoutes);
