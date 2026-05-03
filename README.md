@@ -11,6 +11,8 @@
 
 > A comprehensive, web-based visitor management system built for Aditya University. AUVMS streamlines the entire visitor lifecycle — from pre-registration and check-in to check-out, appointment booking, and security monitoring — while providing rich analytics and audit capabilities for administrators.
 
+🚀 **[Try Live Demo](https://aus-vms-proj.vercel.app/)**
+
 ---
 
 ## Table of Contents
