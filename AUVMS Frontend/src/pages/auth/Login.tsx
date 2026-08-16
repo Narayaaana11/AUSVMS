@@ -428,7 +428,75 @@ const Login = () => {
             </CardContent>
 
             <CardFooter className="flex flex-col space-y-3 pt-0">
-              <div className="text-xs text-center text-slate-500 w-full">
+              {/* Quick Access Credentials */}
+              <div className="w-full">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="h-px flex-1 bg-slate-200" />
+                  <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">
+                    Quick Access
+                  </span>
+                  <div className="h-px flex-1 bg-slate-200" />
+                </div>
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    {
+                      role: "Admin",
+                      username: "admin",
+                      password: "Aditya@123",
+                      description: "Full system access",
+                      color: "#0a4d9b",
+                      badge: "bg-blue-100 text-blue-800",
+                    },
+                    {
+                      role: "Staff",
+                      username: "narayana",
+                      password: "Aditya@123",
+                      description: "Appointments & history",
+                      color: "#16a34a",
+                      badge: "bg-green-100 text-green-800",
+                    },
+                    {
+                      role: "Guard",
+                      username: "guard",
+                      password: "Aditya@123",
+                      description: "Check-in / check-out",
+                      color: "#d97706",
+                      badge: "bg-amber-100 text-amber-800",
+                    },
+                  ].map((cred) => (
+                    <button
+                      key={cred.role}
+                      type="button"
+                      disabled={isLoading || loginSuccess}
+                      onClick={() =>
+                        setFormData((prev) => ({
+                          ...prev,
+                          username: cred.username,
+                          password: cred.password,
+                        }))
+                      }
+                      className="group flex flex-col items-center gap-1 rounded-lg border border-slate-200 bg-slate-50 px-2 py-2.5 text-center transition-all hover:border-slate-300 hover:bg-white hover:shadow-sm active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <span
+                        className={`rounded-full px-2 py-0.5 text-[10px] font-bold tracking-wide ${cred.badge}`}
+                      >
+                        {cred.role}
+                      </span>
+                      <span className="font-mono text-[11px] font-semibold text-slate-700">
+                        {cred.username}
+                      </span>
+                      <span className="text-[10px] leading-tight text-slate-400">
+                        {cred.description}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+                <p className="mt-2 text-center text-[10px] text-slate-400">
+                  Click a role card to auto-fill credentials
+                </p>
+              </div>
+
+              <div className="text-xs text-center text-slate-500 w-full border-t border-slate-100 pt-2">
                 <p>
                   By signing in, you agree to our Terms of Service and Privacy
                   Policy
